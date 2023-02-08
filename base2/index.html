@@ -21,8 +21,8 @@
       <button @click="increment(5)">Add</button>
       <button @click="decrement(5)" >Remove</button>
       <p>Result: {{ counter }}</p>
-      <input type="text" v-on:input="setName"  >
-      <p>Name: {{name}} </p>
+      <input type="text" v-on:input="setName" v-on:keyup.enter="confirm"  >
+      <p>Name: {{confirmName}} </p>
       <form v-on:submit.prevent="submitForm">
         <input type="text" >
         <button>Sign Up</button>
