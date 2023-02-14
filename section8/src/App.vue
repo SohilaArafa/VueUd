@@ -8,11 +8,13 @@
       name="Manuel Lorenz" 
       phone-number="01234" 
       email-address="manuel@localhost.com"  
+      is-favourite = "1"
       ></friend-contact>
       <friend-contact
       name="Julie Lorenz" 
       phone-number="01234" 
       email-address="julie@localhost.com"  
+      is-favourite = "0"
       ></friend-contact>
     </ul>
   </section>
@@ -28,12 +30,14 @@ export default {
           name: "Manuel Lorenz",
           phone: "0123 45678 90",
           email: "manuel@localhost.com",
+          fav : "1"
         },
         {
           id: "julie",
           name: "Julie Jones",
           phone: "0987 654421 21",
           email: "julie@localhost.com",
+          fav : "0"
         },
       ],
     };
