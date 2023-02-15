@@ -3,14 +3,17 @@
     <header>
       <h1>My Friends</h1>
     </header>
+    <new-friend></new-friend>
     <ul>
       <friend-contact  
       v-for="friend in friends"
       :key="friend.id"
+      :id="friend.id"
       :name="friend.name" 
       :phone-number="friend.phone" 
       :email-address="friend.email"  
-      :is-favourite = "true"
+      :is-favourite ="friend.isFavourite"
+      @toggle-favourite="toggleFavStatus(friend.id)"
       ></friend-contact>
 
     </ul>
@@ -18,7 +21,9 @@
 </template>
 
 <script>
+import NewFriend from './components/NewFriend.vue';
 export default {
+  components: { NewFriend },
   data() {
     return {
       friends: [
@@ -27,18 +32,24 @@ export default {
           name: "Manuel Lorenz",
           phone: "0123 45678 90",
           email: "manuel@localhost.com",
-          fav : "1"
+          isFavourite : true
         },
         {
           id: "julie",
           name: "Julie Jones",
           phone: "0987 654421 21",
           email: "julie@localhost.com",
-          fav : "0"
+          isFavourite : false
         },
       ],
     };
   },
+  methods : {
+    toggleFavStatus(friendID) {
+      const identifiedFriend = this.friends.find(friend => {friend.id == friendID});
+      identifiedFriend.isFavourite = !identifiedFriend.isFavourite;
+    }
+  }
 };
 </script>
 
@@ -68,7 +79,7 @@ header {
   padding: 0;
   list-style: none;
 }
-#app li {
+#app li, form {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   margin: 1rem auto;
   border-radius: 10px;
