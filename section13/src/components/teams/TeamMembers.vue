@@ -32,13 +32,14 @@ export default {
     const selectedTeam = this.teams.find(team => team.id === teamId);
     const members = selectedTeam.members;
 
-    const selectedMembers = [];
+    let selectedMembers = [];
     for(const member in members) {
       const selectedUser = this.users.find(user => user.id === member);
       selectedMembers.push(selectedUser);
     }
     this.members = selectedMembers; 
     this.teamName = selectedTeam.name;
+    
   }
 };
 </script>
