@@ -46,7 +46,7 @@ export default {
        }
   } ,
   created() {
-    this.loadTeamMembers() ;
+    this.loadTeamMembers(this.$route) ;
   },
   watch : {
     $route(newRoute) {
