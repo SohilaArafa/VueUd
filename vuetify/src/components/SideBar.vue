@@ -14,10 +14,19 @@
     <v-divider></v-divider>
 
     <v-list density="compact" nav>
-        <v-list-item prepend-icon="mdi-image" title="Color Gallery" value="color"></v-list-item>
-        <v-list-item prepend-icon="mdi-dialpad" title="GraySpace Gallery" value="shared"></v-list-item>
-        <v-list-item prepend-icon="mdi-star" title="Starred" value="starred"></v-list-item>
+        <v-list-item prepend-icon="mdi-image" title="Color Gallery" value="color" @click="selectOption(true)" ></v-list-item>
+        <v-list-item prepend-icon="mdi-dialpad" title="GraySpace Gallery" value="shared" @click="selectOption(false)"></v-list-item>
      </v-list>
 
     </v-navigation-drawer>
 </template>
+
+<script>
+import {defineEmits} from 'vue';
+
+const emits = defineEmits(['selectOption']);
+const selectOption = (isColor) => {
+  emits('selectOption', isColor)
+}
+
+</script>
