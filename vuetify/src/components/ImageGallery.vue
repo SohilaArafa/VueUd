@@ -1,4 +1,5 @@
 <template>
+<v-card class="mx-5 my-2 pa-3" >
     <v-row>
         <v-col 
          v-for="n in 200"
@@ -28,5 +29,6 @@
             </v-card>
         </v-col>
     </v-row>
+</v-card>
 </template>
 
