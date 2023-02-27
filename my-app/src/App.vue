@@ -79,7 +79,8 @@ export default {
         description: description,
         done: false,
       };
-      this.items.push(newItem);
+      if (newItem.title) this.items.push(newItem);
+      else alert("You should enter a title");
       console.log(newItem);
     },
 
