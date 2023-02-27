@@ -21,7 +21,7 @@
 
 
 
-        <v-btn icon>
+        <v-btn icon @click="deleteAll">
           <v-icon>mdi-delete</v-icon>
         </v-btn>
 
@@ -29,36 +29,19 @@
 
       <v-main>
         <v-container fluid>
-          <v-card 
-              title="Enter your new task"
-              >
-              <input class="ma-4"   />
-              <v-sheet class="float-right">
-              <v-btn
-                class="ma-2" color="primary"
-              >
-              Add
-              <v-icon
-                end
-                icon="mdi-checkbox-marked-circle"
-              ></v-icon>
-            </v-btn>
-          </v-sheet>
-          </v-card>
+          <new-item @add-item="addItem" ></new-item>
           <v-divider></v-divider>
           <v-row dense>
             <v-col
-              v-for="n in 2"
-              :key="n"
+              v-for="item in items"
+              :key="item.id"
               cols="12"
             >
               <v-card
-                :title="`Content ${n}`"
-                :subtitle="`Subtitle for Content ${n}`"
-                text="Lorem ipsum dolor sit amet consectetur, adipisicing elit.?"
-                
+                :title="item.title"
+                :subtitle="item.description"
               >
-              <v-btn icon class="ma-2" size="small">
+              <v-btn icon class="ma-2" size="small" @click="deleteItem">
                 <v-icon >mdi-delete</v-icon>
               </v-btn>
               <v-sheet class="float-right">
@@ -81,13 +64,40 @@
   </v-card>
 </template>
 
-
-
-<style scoped>
-input{
-  width: 90%;
-  border: 2px solid rgba(19,84,122,.8);
-  border-radius: 4px;
-  
+<script>
+import NewItem from './components/NewItem.vue';
+export default {
+  components: { NewItem },
+  data() {
+    return {
+      items: [
+        {
+          id: "1",
+          title: "Vuetify",
+          description : "description",
+          delete : false
+        }
+      ],
+    };
+  },
+  methods: {
+    addItem(title,description) {
+      const newItem = {
+        id: new Date().toISOString() ,
+        title : title,
+        description : description,
+        delete : false
+      }
+      this.item.push(newItem);
+    }
+  },
+    deleteItem(itemID) {
+        this.items = this.items.filter((item)=> item.id !== itemID)
+    },
+    deleteAll() {
+      this.items = [];
+    }
 }
-</style>
+</script>
+
+
