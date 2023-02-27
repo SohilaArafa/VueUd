@@ -26,7 +26,7 @@ import {defineEmits} from 'vue';
 
 const emits = defineEmits(['selectOption']);
 const selectOption = (isColor) => {
-  emits('selectOption', isColor)
+  emits("selectOption", isColor)
 }
 
 </script>
