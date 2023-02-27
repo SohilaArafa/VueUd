@@ -75,7 +75,6 @@ export default {
           id: "1",
           title: "Vuetify",
           description : "description",
-          delete : false
         }
       ],
     };
@@ -86,7 +85,6 @@ export default {
         id: new Date().toISOString() ,
         title : title,
         description : description,
-        delete : false
       }
       this.item.push(newItem);
     }
