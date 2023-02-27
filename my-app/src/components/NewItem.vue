@@ -1,5 +1,5 @@
 <template>
- <form @submit.prevent="addData" >
+
     <v-card 
         title="Enter your new task"
         >
@@ -12,7 +12,7 @@
            <v-text-field v-model="enteredDescription" label="Details"></v-text-field>
          </div>
         <v-sheet class="float-right">
-            <v-btn class="ma-2" color="primary" @click="addItem">
+            <v-btn class="ma-2" color="primary" @click="addData">
                 Add
             <v-icon
               end
@@ -22,7 +22,6 @@
         </v-sheet>
         
     </v-card>
-     </form>   
 </template>
 
 <script>

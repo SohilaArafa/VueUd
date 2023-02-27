@@ -19,42 +19,32 @@
 
         <v-spacer></v-spacer>
 
-
-
         <v-btn icon @click="deleteAll">
           <v-icon>mdi-delete</v-icon>
         </v-btn>
-
       </v-app-bar>
 
       <v-main>
         <v-container fluid>
-          <new-item @add-item="addItem" ></new-item>
+          <new-item @add-item="addItem"></new-item>
           <v-divider></v-divider>
           <v-row dense>
-            <v-col
-              v-for="item in items"
-              :key="item.id"
-              cols="12"
-            >
-              <v-card
-                :title="item.title"
-                :subtitle="item.description"
-              >
-              <v-btn icon class="ma-2" size="small" @click="deleteItem">
-                <v-icon >mdi-delete</v-icon>
-              </v-btn>
-              <v-sheet class="float-right">
-              <v-btn
-                class="ma-2"
-              >
-              Done
-              <v-icon
-                end
-                icon="mdi-checkbox-marked-circle"
-              ></v-icon>
-            </v-btn>
-          </v-sheet>
+            <v-col v-for="item in items" :key="item.id" cols="12">
+              <v-card :title="item.title" :subtitle="item.description">
+                <v-btn
+                  icon
+                  class="ma-2"
+                  size="small"
+                  @click="deleteItem(item.id)"
+                >
+                  <v-icon>mdi-delete</v-icon>
+                </v-btn>
+                <v-sheet class="float-right">
+                  <v-btn class="ma-2">
+                    Done
+                    <v-icon end icon="mdi-checkbox-marked-circle"></v-icon>
+                  </v-btn>
+                </v-sheet>
               </v-card>
             </v-col>
           </v-row>
@@ -65,7 +55,7 @@
 </template>
 
 <script>
-import NewItem from './components/NewItem.vue';
+import NewItem from "./components/NewItem.vue";
 export default {
   components: { NewItem },
   data() {
@@ -74,31 +64,31 @@ export default {
         {
           id: "1",
           title: "Vuetify",
-          description : "description",
-          done : false
-        }
+          description: "description",
+          done: false,
+        },
       ],
     };
   },
-  computed : {},
+  computed: {},
   methods: {
-    addItem(title,description) {
+    addItem(title, description) {
       const newItem = {
-        id: new Date().toISOString() ,
-        title : title,
-        description : description,
-        done : false
-      }
-      this.item.push(newItem);
-    }
-  },
+        id: new Date().toISOString(),
+        title: title,
+        description: description,
+        done: false,
+      };
+      this.items.push(newItem);
+      console.log(newItem);
+    },
+
     deleteItem(itemID) {
-        this.items = this.items.filter((item)=> item.id !== itemID)
+      this.items = this.items.filter((item) => item.id !== itemID);
     },
     deleteAll() {
       this.items = [];
-    }
-}
+    },
+  },
+};
 </script>
-
-
