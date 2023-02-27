@@ -19,18 +19,12 @@
 
         <v-spacer></v-spacer>
 
-        <v-btn icon @click="deleteAll">
+        <v-btn icon @click="dialog = true">
           <v-icon>mdi-delete</v-icon>
         </v-btn>
 
         <div class="text-center">
           <v-dialog v-model="dialog" width="500">
-            <template v-slot:activator="{ on, attrs }">
-              <v-btn v-bind="attrs" v-on="on" class="mt-2" color="red" dark>
-                Delete All
-              </v-btn>
-            </template>
-
             <v-card>
               <v-card-title class="text-h5"> Delete ? </v-card-title>
               <v-card-text>
@@ -82,9 +76,8 @@
 
 <script>
 import NewItem from "./components/NewItem.vue";
-import Test from "./components/Test.vue";
 export default {
-  components: { NewItem, Test },
+  components: { NewItem },
   data() {
     return {
       items: [],
@@ -109,7 +102,9 @@ export default {
       this.items = this.items.filter((item) => item.id !== itemID);
     },
     deleteAll() {
+      console.log("deleteAll", this.items);
       this.items = [];
+      this.dialog = false;
     },
   },
 };
