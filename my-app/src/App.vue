@@ -75,16 +75,19 @@ export default {
           id: "1",
           title: "Vuetify",
           description : "description",
+          done : false
         }
       ],
     };
   },
+  computed : {},
   methods: {
     addItem(title,description) {
       const newItem = {
         id: new Date().toISOString() ,
         title : title,
         description : description,
+        done : false
       }
       this.item.push(newItem);
     }
